@@ -9,6 +9,10 @@ public class LinkedList {
 	
 	private Node head;
 	
+	public Node getHead() {
+		return head;
+	}
+
 	public void insertAtFront(Object data) {
 		Node newNode = new Node(data);
 		newNode.setNext(head);
@@ -28,7 +32,7 @@ public class LinkedList {
 
 	private Node getTail() {
 		Node tail = head;
-		while(tail != null) {
+		while(tail.getNext() != null) {
 			tail = tail.getNext();
 		}
 		return tail;
@@ -40,6 +44,20 @@ public class LinkedList {
 		Node newNode = new Node(data);
 		newNode.setNext(prevNode.getNext());
 		prevNode.setNext(newNode);
+	}
+	public void reverse() {
+		
+		Node current = head;
+		Node prevNode = null;
+		Node nextNode = null;
+		
+		while(null != current) {
+			nextNode = current.getNext();
+			current.setNext(prevNode);
+			prevNode = current;
+			current = nextNode;
+		}
+		head = prevNode;
 	}
 	
 }
