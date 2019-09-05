@@ -20,13 +20,18 @@ public class LinkedList {
 		if(head == null) {
 			head = newNode;
 		}else {
-			Node tail = head;
-			while(tail != null) {
-				tail = tail.getNext();
-			}
+			Node tail = getTail();
 			tail.setNext(newNode);
 			newNode.setNext(null);
 		}
+	}
+
+	private Node getTail() {
+		Node tail = head;
+		while(tail != null) {
+			tail = tail.getNext();
+		}
+		return tail;
 	}
 	public void insertBetween(Node prevNode, Object data) {
 		if(prevNode == null) {
